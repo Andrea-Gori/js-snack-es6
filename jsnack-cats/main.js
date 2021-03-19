@@ -60,13 +60,53 @@ cats.forEach(element => {
   } else if (element.sesso == 'Femmina') {
     color = 'pink';
   }
-  $('#gatti-milestone2').append(`<li class="${color}">${element.nome} è di colore ${element.colore}<i class="fas fa-ribbon"></i></li>`)
+  
+
+  let opacity;
+
+  if (element.eta < 5) {
+    opacity = 'op1'
+  }else if (element.eta >=5 && element.eta <= 10) {
+    opacity = 'op2'
+  } else {
+    opacity = 'op3'
+  }
+
+  $('#gatti-milestone2').append(`<li class="${color} ${opacity}">${element.nome} è di colore ${element.colore}<i class="fas fa-ribbon"></i></li>`)
 });
 
 
+/* Creare un nuovo array con prima tutti i gattini femmina e poi tutti i gattini maschio, inserendo solamente nome e età e colore e opacità del fiocco per ogni gatto. */
 
+let maschiFemmine = [...femmine, ...maschi];
+console.log(maschiFemmine);
 
+maschiFemmine.forEach(element => {
+  let color;
 
+  if (element.sesso == 'Maschio') {
+    color = 'blu';
+  } else if (element.sesso == 'Femmina') {
+    color = 'pink';
+  }
+  
+
+  let opacity;
+
+  if (element.eta < 5) {
+    opacity = 'op1'
+  }else if (element.eta >=5 && element.eta <= 10) {
+    opacity = 'op2'
+  } else {
+    opacity = 'op3'
+  }
+
+  $('#gatti-milestone3').append(`<li class="${color} ${opacity}">${element.nome} è di colore ${element.colore}<i class="fas fa-ribbon"></i></li>`)
+
+  /* let copyMaschiFemmine ={ ...maschiFemmine, opacity: `${opacity}`} 
+  console.log(copyMaschiFemmine); */
+
+});
 
 
 
