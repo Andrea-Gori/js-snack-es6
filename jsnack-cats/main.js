@@ -81,6 +81,8 @@ cats.forEach(element => {
 let maschiFemmine = [...femmine, ...maschi];
 console.log(maschiFemmine);
 
+let nuovoArray = [];
+
 maschiFemmine.forEach(element => {
   let color;
 
@@ -92,21 +94,25 @@ maschiFemmine.forEach(element => {
   
 
   let opacity;
+  let nuovaprop;
 
   if (element.eta < 5) {
     opacity = 'op1'
+    nuovaprop = {...element, opacity:0.5}
   }else if (element.eta >=5 && element.eta <= 10) {
     opacity = 'op2'
+    nuovaprop = {...element, opacity:0.7}
   } else {
     opacity = 'op3'
+    nuovaprop = {...element, opacity:0.9}
   }
 
-  $('#gatti-milestone3').append(`<li class="${color} ${opacity}">${element.nome} è di colore ${element.colore}<i class="fas fa-ribbon"></i></li>`)
+  nuovoArray.push(nuovaprop)
 
-  /* let copyMaschiFemmine ={ ...maschiFemmine, opacity: `${opacity}`} 
-  console.log(copyMaschiFemmine); */
+  $('#gatti-milestone3').append(`<li class="${color} ${opacity}">${element.nome} è di colore ${element.colore}, ha ${element.eta} anni, è un/una ${element.sesso} e il suo fiocco ha opacità ${nuovaprop.opacity} <i class="fas fa-ribbon" style="${nuovaprop.opacity}"></i></li>`)
 
 });
+console.log(nuovoArray);
 
 
 
